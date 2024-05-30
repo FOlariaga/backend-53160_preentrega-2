@@ -33,7 +33,8 @@ class CartsManager {
 
     //complemento
     async deleteProductInCart(cid, pid){
-        const cart = await cartsModel.find
+        //como filtro y elimino unicamente el producto dentro del array sin eliminar todo?
+        const cart = await cartsModel.find(cid)
         return cart
     }
 
