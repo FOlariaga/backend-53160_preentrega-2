@@ -31,7 +31,7 @@ router.get("/cart/:cid", async (req, res) => {
     const cid = req.params.cid
     const cart = await cartsManager.getById(cid)
     console.log(cart);
-    res.render("cart", {})
+    res.render("cart", {data: cart})
 })
 
 export default router
