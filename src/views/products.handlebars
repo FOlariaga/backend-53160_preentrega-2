@@ -1,17 +1,29 @@
 <div >
     <h1>Productos</h1>
     
-    <div class="carts">
-        {{#each data}}
-        <div class="cartProduct">
+    <div class="card">
+        {{#each data.docs}}
+        <div class="cardProduct">
             <h3>{{title}}</h3>
             <p>
             {{description}} <br>
             precio ${{price}}
             </p>
+        <button id="addToCart">agregar al carrito</button>
         </div>
         {{/each}}
     </div>
+    <div class="pagesManager">
+    {{#if data.prevPage}}
+    <a class="buttonPages" href="/products?page={{data.prevPage}}&limit={{data.limit}}">Anterior</a>
+    {{/if}}
+    
+    |
+    
+    {{#if data.nextPage}}
+    <a class="buttonPages" href="/products?page={{data.nextPage}}&limit={{data.limit}}">Siguiente</a>
+    {{/if}}
+</div>
 </div>
 
 <div>

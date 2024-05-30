@@ -11,6 +11,7 @@ const router = Router()
 
 router.get("/products", async (req, res) => {
     const products = await productsManager.get({limit: req.query.limit || 10, page: req.query.page || 1, query : req.query.query || {}})
+    console.log(products);
     res.render("products", { data: products })
 })
 
