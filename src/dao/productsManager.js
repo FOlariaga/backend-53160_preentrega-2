@@ -3,7 +3,14 @@ class ProductManager {
 
     async get({limit, page, query}) {
 
-        const products = await productsModel.paginate(query, { page: page, limit: limit , lean : true})
+        if (query == "") {
+            const products = await productsModel.paginate({}, { page: page, limit: limit , lean : true})
+            console.log(products);
+            return products
+        }
+
+        const products = await productsModel.paginate({category : query}, { page: page, limit: limit , lean : true})
+        console.log(products);
         return products
     }
 

@@ -9,7 +9,7 @@ const router = Router()
 
 router.get("/", async (req, res) => {
     try {
-            const products = await productsManager.get({limit: req.query.limit || 10, page: req.query.page || 1, query : req.query.query || {}})
+            const products = await productsManager.get({limit: req.query.limit || 10, page: req.query.page || 1, query : req.query.query || ""})
             res.status(200).send({origin: config.SERVER, payload: products})
         
 
@@ -33,7 +33,7 @@ router.get("/:pid", async (req, res) => {
 router.post("/", uploader.single('thumbnails'), async (req, res) => {
     try {
         if (req.file) {
-            const thumbnail = {thumbnail: req.file.originalname}
+            const thumbnail = {thumbnail: req.file.originalname || ""}
             const data = {...req.body, ...thumbnail}
             const process = await productsManager.add(data)
             res.status(200).send({ origin: config.SERVER, payload: process });

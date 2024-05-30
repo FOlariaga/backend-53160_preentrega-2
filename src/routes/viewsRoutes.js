@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, query } from "express";
 // import productsModel from "../dao/models/products.model.js"
 // import chatModel from "../dao/models/chat.model.js";
 import ProductsManager from "../dao/productsManager.js";
@@ -10,9 +10,8 @@ const cartsManager = new CartsManager()
 const router = Router()
 
 router.get("/products", async (req, res) => {
-    const products = await productsManager.get({limit: req.query.limit || 10, page: req.query.page || 1, query : req.query.query || {}})
-    console.log(products);
-    res.render("products", { data: products })
+    const products = await productsManager.get({limit: req.query.limit || 10, page: req.query.page || 1, query : req.query.query || "" });
+    res.render("products", {data: Object.assign(products,{category : req.query.query || ""})})
 })
 
 router.get("/products/:pid", async (req, res) => {

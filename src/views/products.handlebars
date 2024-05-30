@@ -1,5 +1,6 @@
 <div >
     <h1>Productos</h1>
+    <h2>{{data.category}}</h2>
     
     <div class="card">
         {{#each data.docs}}
@@ -15,13 +16,13 @@
     </div>
     <div class="pagesManager">
     {{#if data.prevPage}}
-    <a class="buttonPages" href="/products?page={{data.prevPage}}&limit={{data.limit}}">Anterior</a>
+    <a class="buttonPages" href="/products?page={{data.prevPage}}&limit={{data.limit}}&query={{data.category}}">Anterior</a>
     {{/if}}
     
     |
     
     {{#if data.nextPage}}
-    <a class="buttonPages" href="/products?page={{data.nextPage}}&limit={{data.limit}}">Siguiente</a>
+    <a class="buttonPages" href="/products?page={{data.nextPage}}&limit={{data.limit}}&query={{data.category}}">Siguiente</a>
     {{/if}}
 </div>
 </div>
