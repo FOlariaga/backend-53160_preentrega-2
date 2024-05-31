@@ -60,13 +60,6 @@ router.delete("/:cid", async (req, res) => {
     }
 })
 
-//actualizar el array del carrito
-router.put("/:cid", async (req, res) => {
-    try {
-    } catch (error) {
-    }
-})
-
 
 
 // eliminar el producto especifico del array
